@@ -1,0 +1,185 @@
+azeros@gb-linux:~$ ls -l
+итого 40
+drwxrwx--- 1 root   vboxsf    0 ноя 27 22:28  hsared
+drwx------ 5 azeros azeros 4096 дек  3 22:18  snap
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros azeros 4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2 azeros azeros 4096 дек  6 04:15  Учеба
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ cd Учеба
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+azeros@gb-linux:~/Учеба$ touch name
+azeros@gb-linux:~/Учеба$ touch family
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw-rw-r-- 1 azeros azeros 0 дек  6 04:16 family
+-rw-rw-r-- 1 azeros azeros 0 дек  6 04:16 name
+azeros@gb-linux:~/Учеба$ chmod u=rw,g=rw,o=r name
+azeros@gb-linux:~/Учеба$ chmod 600 family
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw------- 1 azeros azeros 0 дек  6 04:16 family
+-rw-rw-r-- 1 azeros azeros 0 дек  6 04:16 name
+azeros@gb-linux:~/Учеба$ sudo useradd -s /bin/bash -m -d /home/new_user new_user
+[sudo] пароль для azeros: 
+azeros@gb-linux:~/Учеба$ sudo passwd new_user
+Новый пароль: 
+НЕУДАЧНЫЙ ПАРОЛЬ: Пароль должен содержать не менее 8 символов
+Повторите ввод нового пароля: 
+Извините, но пароли не совпадают.
+Новый пароль: 
+Повторите ввод нового пароля: 
+passwd: пароль успешно обновлён
+azeros@gb-linux:~/Учеба$ cd ..
+azeros@gb-linux:~$ ls -l
+итого 40
+drwxrwx--- 1 root   vboxsf    0 ноя 27 22:28  hsared
+drwx------ 5 azeros azeros 4096 дек  3 22:18  snap
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros azeros 4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2 azeros azeros 4096 дек  6 04:16  Учеба
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ chown -R new_user:new_user Учеба
+chown: изменение владельца 'Учеба/name': Операция не позволена
+chown: изменение владельца 'Учеба/family': Операция не позволена
+chown: изменение владельца 'Учеба': Операция не позволена
+azeros@gb-linux:~$ sudo chown -R new_user:new_user Учеба
+[sudo] пароль для azeros: 
+azeros@gb-linux:~$ ls -l
+итого 40
+drwxrwx--- 1 root     vboxsf      0 ноя 27 22:28  hsared
+drwx------ 5 azeros   azeros   4096 дек  3 22:18  snap
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros   azeros   4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2 new_user new_user 4096 дек  6 04:16  Учеба
+drwxr-xr-x 2 azeros   azeros   4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ cd Учеба
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw------- 1 new_user new_user 0 дек  6 04:16 family
+-rw-rw-r-- 1 new_user new_user 0 дек  6 04:16 name
+azeros@gb-linux:~/Учеба$ sudo adduser aleksandr
+Добавляется пользователь «aleksandr» ...
+Добавляется новая группа «aleksandr» (1002) ...
+Добавляется новый пользователь «aleksandr» (1002) в группу «aleksandr» ...
+Создаётся домашний каталог «/home/aleksandr» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль: 
+НЕУДАЧНЫЙ ПАРОЛЬ: Пароль должен содержать не менее 8 символов
+Повторите ввод нового пароля: 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе aleksandr
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: Александр
+	Номер комнаты []: отсутствует
+	Рабочий телефон []: 982-454-97-99
+	Домашний телефон []: 2-54-82
+	Другое []: 
+chfn: имя «Александр» содержит не ASCII-символы
+chfn: номер комнаты «отсутствует» содержит не ASCII-символы
+Данная информация корректна? [Y/n] y
+azeros@gb-linux:~/Учеба$ nano /etc/passwd
+...
+azeros:x:1000:1000:Александр,,,:/home/azeros:/bin/bash
+sshd:x:129:65534::/run/sshd:/usr/sbin/nologin
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+new_user:x:1001:1001::/home/new_user:/bin/bash
+
+aleksandr:x:1002:1002:Александр,отсутствует,982-454-97-99,2-54-82:/home/aleksandr:/bin/bash
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw------- 1 new_user new_user 0 дек  6 04:16 family
+-rw-rw-r-- 1 new_user new_user 0 дек  6 04:16 name
+azeros@gb-linux:~/Учеба$ cd ..
+azeros@gb-linux:~$ sudo chown -R aleksandr:aleksandr Учеба
+azeros@gb-linux:~$ ls -l
+итого 40
+drwxrwx--- 1 root      vboxsf       0 ноя 27 22:28  hsared
+drwx------ 5 azeros    azeros    4096 дек  3 22:18  snap
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros    azeros    4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2 aleksandr aleksandr 4096 дек  6 04:16  Учеба
+drwxr-xr-x 2 azeros    azeros    4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ cd Учеба
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw------- 1 aleksandr aleksandr 0 дек  6 04:16 family
+-rw-rw-r-- 1 aleksandr aleksandr 0 дек  6 04:16 name
+azeros@gb-linux:~/Учеба$ userdel -r new_user
+userdel: Permission denied.
+userdel: не удалось заблокировать /etc/passwd; попробуйте ещё раз позже.
+azeros@gb-linux:~/Учеба$ sudo userdel -r new_user
+userdel: почтовый ящик new_user (/var/mail/new_user) не найден
+azeros@gb-linux:~/Учеба$ nano /etc/passwd
+...
+azeros:x:1000:1000:Александр,,,:/home/azeros:/bin/bash
+sshd:x:129:65534::/run/sshd:/usr/sbin/nologin
+vboxadd:x:999:1::/var/run/vboxadd:/bin/false
+aleksandr:x:1002:1002:Александр,отсутствует,982-454-97-99,2-54-82:/home/aleksandr:/bin/bash
+
+zeros@gb-linux:~/Учеба$ sudo groupadd developers
+azeros@gb-linux:~/Учеба$ sudo addgroup testing
+Добавляется группа «testing» (GID 1001) ...
+Готово.
+azeros@gb-linux:~/Учеба$ nano /etc/group
+...
+azeros:x:1000:
+sambashare:x:136:azeros
+vboxsf:x:999:azeros
+vboxdrmipc:x:998:
+aleksandr:x:1002:
+developers:x:1003:
+testing:x:1001:
+
+azeros@gb-linux:~/Учеба$ sudo usermod -aG testing aleksandr
+azeros@gb-linux:~/Учеба$ sudo usermod -aG devepopers aleksandr
+usermod: группа «devepopers» не существует
+azeros@gb-linux:~/Учеба$ sudo usermod -aG developers aleksandr
+azeros@gb-linux:~/Учеба$ sudo usermod -aG testing azeros
+azeros@gb-linux:~/Учеба$ nano /etc/group
+...
+azeros:x:1000:
+sambashare:x:136:azeros
+vboxsf:x:999:azeros
+vboxdrmipc:x:998:
+aleksandr:x:1002:
+developers:x:1003:aleksandr
+testing:x:1001:aleksandr,azeros
+
+azeros@gb-linux:~/Учеба$ sudo deluser azeros testing
+Удаляется пользователь «azeros» из группы «testing» ...
+Готово.
+azeros@gb-linux:~/Учеба$ sudo deluser aleksandr developers
+Удаляется пользователь «aleksandr» из группы «developers» ...
+Готово.
+azeros@gb-linux:~/Учеба$ nano /etc/group
+...
+azeros:x:1000:
+sambashare:x:136:azeros
+vboxsf:x:999:azeros
+vboxdrmipc:x:998:
+aleksandr:x:1002:
+developers:x:1003:
+testing:x:1001:aleksandr
+
