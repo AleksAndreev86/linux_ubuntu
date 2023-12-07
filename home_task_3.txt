@@ -183,3 +183,37 @@ aleksandr:x:1002:
 developers:x:1003:
 testing:x:1001:aleksandr
 
+azeros@gb-linux:~$ sudo adduser alex
+Добавляется пользователь «alex» ...
+Добавляется новая группа «alex» (1004) ...
+Добавляется новый пользователь «alex» (1001) в группу «alex» ...
+Создаётся домашний каталог «/home/alex» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль: 
+НЕУДАЧНЫЙ ПАРОЛЬ: Пароль не прошел проверку орфографии - слишком простой
+Повторите ввод нового пароля: 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе alex
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: Alex
+	Номер комнаты []: 
+	Рабочий телефон []: 
+	Домашний телефон []: 
+	Другое []: 
+Данная информация корректна? [Y/n] y
+azeros@gb-linux:~$ sudo adduser alex sudo
+Добавляется пользователь «alex» в группу «sudo» ...
+Добавление пользователя alex в группу sudo
+Готово.
+azeros@gb-linux:~$ nano /etc/group
+...
+floppy:x:25:
+tape:x:26:
+sudo:x:27:azeros,alex
+audio:x:29:pulse
+dip:x:30:azeros
+...
+azeros@gb-linux:~$ sudo nano /etc/sudoers.d/alex
+alex ALL= (ALL) NOPASSWD:ALL
+
+azeros@gb-linux:~$ sudo chmod 644 /etc/sudoers.d/alex
