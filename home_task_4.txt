@@ -1,0 +1,320 @@
+azeros@gb-linux:~$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease                                    
+Сущ:4 http://security.ubuntu.com/ubuntu jammy-security InRelease                                       
+Чтение списков пакетов… Готово                                 
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлено 6 пакетов. Запустите «apt list --upgradable» для их показа.
+azeros@gb-linux:~$ sudo apt install curl software-properties-common ca-certificates apt-transport-https -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Уже установлен пакет ca-certificates самой новой версии (20230311ubuntu0.22.04.1).
+ca-certificates помечен как установленный вручную.
+Уже установлен пакет software-properties-common самой новой версии (0.99.22.8).
+software-properties-common помечен как установленный вручную.
+Следующие НОВЫЕ пакеты будут установлены:
+  apt-transport-https curl
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 6 пакетов не обновлено.
+Необходимо скачать 196 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 624 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 apt-transport-https all 2.4.11 [1 510 B]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.15 [194 kB]
+Получено 196 kB за 0с (455 kB/s)
+Выбор ранее не выбранного пакета apt-transport-https.
+(Чтение базы данных … на данный момент установлен 212171 файл и каталог.)
+Подготовка к распаковке …/apt-transport-https_2.4.11_all.deb …
+Распаковывается apt-transport-https (2.4.11) …
+Выбор ранее не выбранного пакета curl.
+Подготовка к распаковке …/curl_7.81.0-1ubuntu1.15_amd64.deb …
+Распаковывается curl (7.81.0-1ubuntu1.15) …
+Настраивается пакет apt-transport-https (2.4.11) …
+Настраивается пакет curl (7.81.0-1ubuntu1.15) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+azeros@gb-linux:~$ wget -O- https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor | sudo tee /etc/apt/keyrings/docker.gpg > /dev/null
+--2023-12-11 18:41:07--  https://download.docker.com/linux/ubuntu/gpg
+Распознаётся download.docker.com (download.docker.com)… 108.156.22.21, 108.156.22.116, 108.156.22.86, ...
+Подключение к download.docker.com (download.docker.com)|108.156.22.21|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 3817 (3,7K) [binary/octet-stream]
+Сохранение в: ‘STDOUT’
+
+-                                                  100%[================================================================================================================>]   3,73K  --.-KB/s    за 0s      
+
+/2023-12-11 18:41:07 (29,7 MB/s) - записан в stdout [3817/3817]
+
+azeros@gb-linux:~$ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+azeros@gb-linux:~$ sudo apt update
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease                                                                                    
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease                                                                                  
+Сущ:4 http://security.ubuntu.com/ubuntu jammy-security InRelease                                                                                     
+Пол:5 https://download.docker.com/linux/ubuntu jammy InRelease [48,8 kB]                                                     
+Пол:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [23,0 kB]
+Получено 71,8 kB за 2с (43,4 kB/s)
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлено 6 пакетов. Запустите «apt list --upgradable» для их показа.
+azeros@gb-linux:~$ apt-cache policy docker-ce
+docker-ce:
+  Установлен: (отсутствует)
+  Кандидат:   5:24.0.7-1~ubuntu.22.04~jammy
+  Таблица версий:
+     5:24.0.7-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.6-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.5-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.4-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.3-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.2-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.1-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:24.0.0-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.6-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.5-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.4-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.3-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.2-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.1-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:23.0.0-1~ubuntu.22.04~jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.24~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.23~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.22~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.21~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.20~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.19~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.18~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.17~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.16~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.15~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.14~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+     5:20.10.13~3-0~ubuntu-jammy 500
+        500 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages
+azeros@gb-linux:~$ sudo apt install docker-ce -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Будут установлены следующие дополнительные пакеты:
+  containerd.io docker-buildx-plugin docker-ce-cli docker-ce-rootless-extras docker-compose-plugin libslirp0 pigz slirp4netns
+Предлагаемые пакеты:
+  aufs-tools cgroupfs-mount | cgroup-lite
+Следующие НОВЫЕ пакеты будут установлены:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin libslirp0 pigz slirp4netns
+Обновлено 0 пакетов, установлено 9 новых пакетов, для удаления отмечено 0 пакетов, и 6 пакетов не обновлено.
+Необходимо скачать 115 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 411 MB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 pigz amd64 2.6-1 [63,6 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu jammy/main amd64 libslirp0 amd64 4.6.1-1build1 [61,5 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 slirp4netns amd64 1.0.1-2 [28,2 kB]
+Пол:4 https://download.docker.com/linux/ubuntu jammy/stable amd64 containerd.io amd64 1.6.26-1 [29,5 MB]
+Пол:5 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-buildx-plugin amd64 0.11.2-1~ubuntu.22.04~jammy [28,2 MB]
+Пол:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-cli amd64 5:24.0.7-1~ubuntu.22.04~jammy [13,3 MB]                                                                              
+Пол:7 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce amd64 5:24.0.7-1~ubuntu.22.04~jammy [22,6 MB]                                                                                  
+Пол:8 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-rootless-extras amd64 5:24.0.7-1~ubuntu.22.04~jammy [9 030 kB]                                                                 
+Пол:9 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-compose-plugin amd64 2.21.0-1~ubuntu.22.04~jammy [11,9 MB]                                                                        
+Получено 115 MB за 11с (10,1 MB/s)                                                                                                                                                                         
+Выбор ранее не выбранного пакета pigz.
+(Чтение базы данных … на данный момент установлено 212182 файла и каталога.)
+Подготовка к распаковке …/0-pigz_2.6-1_amd64.deb …
+Распаковывается pigz (2.6-1) …
+Выбор ранее не выбранного пакета containerd.io.
+Подготовка к распаковке …/1-containerd.io_1.6.26-1_amd64.deb …
+Распаковывается containerd.io (1.6.26-1) …
+Выбор ранее не выбранного пакета docker-buildx-plugin.
+Подготовка к распаковке …/2-docker-buildx-plugin_0.11.2-1~ubuntu.22.04~jammy_amd64.deb …
+Распаковывается docker-buildx-plugin (0.11.2-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-ce-cli.
+Подготовка к распаковке …/3-docker-ce-cli_5%3a24.0.7-1~ubuntu.22.04~jammy_amd64.deb …
+Распаковывается docker-ce-cli (5:24.0.7-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-ce.
+Подготовка к распаковке …/4-docker-ce_5%3a24.0.7-1~ubuntu.22.04~jammy_amd64.deb …
+Распаковывается docker-ce (5:24.0.7-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-ce-rootless-extras.
+Подготовка к распаковке …/5-docker-ce-rootless-extras_5%3a24.0.7-1~ubuntu.22.04~jammy_amd64.deb …
+Распаковывается docker-ce-rootless-extras (5:24.0.7-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета docker-compose-plugin.
+Подготовка к распаковке …/6-docker-compose-plugin_2.21.0-1~ubuntu.22.04~jammy_amd64.deb …
+Распаковывается docker-compose-plugin (2.21.0-1~ubuntu.22.04~jammy) …
+Выбор ранее не выбранного пакета libslirp0:amd64.
+Подготовка к распаковке …/7-libslirp0_4.6.1-1build1_amd64.deb …
+Распаковывается libslirp0:amd64 (4.6.1-1build1) …
+Выбор ранее не выбранного пакета slirp4netns.
+Подготовка к распаковке …/8-slirp4netns_1.0.1-2_amd64.deb …
+Распаковывается slirp4netns (1.0.1-2) …
+Настраивается пакет docker-buildx-plugin (0.11.2-1~ubuntu.22.04~jammy) …
+Настраивается пакет containerd.io (1.6.26-1) …
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
+Настраивается пакет docker-compose-plugin (2.21.0-1~ubuntu.22.04~jammy) …
+Настраивается пакет docker-ce-cli (5:24.0.7-1~ubuntu.22.04~jammy) …
+Настраивается пакет libslirp0:amd64 (4.6.1-1build1) …
+Настраивается пакет pigz (2.6-1) …
+Настраивается пакет docker-ce-rootless-extras (5:24.0.7-1~ubuntu.22.04~jammy) …
+Настраивается пакет slirp4netns (1.0.1-2) …
+Настраивается пакет docker-ce (5:24.0.7-1~ubuntu.22.04~jammy) …
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Обрабатываются триггеры для man-db (2.10.2-1) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.5) …
+azeros@gb-linux:~$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2023-12-11 18:45:58 +05; 38s ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 12113 (dockerd)
+      Tasks: 8
+     Memory: 36.4M
+        CPU: 463ms
+     CGroup: /system.slice/docker.service
+             └─12113 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+дек 11 18:45:48 gb-linux systemd[1]: Starting Docker Application Container Engine...
+дек 11 18:45:48 gb-linux dockerd[12113]: time="2023-12-11T18:45:48.335628121+05:00" level=info msg="Starting up"
+дек 11 18:45:48 gb-linux dockerd[12113]: time="2023-12-11T18:45:48.338324184+05:00" level=info msg="detected 127.0.0.53 nameserver, assuming systemd-resolved, so using resolv.conf: /run/systemd/resolve/r>
+дек 11 18:45:50 gb-linux dockerd[12113]: time="2023-12-11T18:45:50.005142733+05:00" level=info msg="Loading containers: start."
+дек 11 18:45:52 gb-linux dockerd[12113]: time="2023-12-11T18:45:52.139723816+05:00" level=info msg="Loading containers: done."
+дек 11 18:45:57 gb-linux dockerd[12113]: time="2023-12-11T18:45:57.877340571+05:00" level=info msg="Docker daemon" commit=311b9ff graphdriver=overlay2 version=24.0.7
+дек 11 18:45:57 gb-linux dockerd[12113]: time="2023-12-11T18:45:57.878026097+05:00" level=info msg="Daemon has completed initialization"
+дек 11 18:45:58 gb-linux dockerd[12113]: time="2023-12-11T18:45:58.304349042+05:00" level=info msg="API listen on /run/docker.sock"
+дек 11 18:45:58 gb-linux systemd[1]: Started Docker Application Container Engine.
+azeros@gb-linux:~$ sudo dpkg -r mc
+[sudo] пароль для azeros: 
+(Чтение базы данных … на данный момент установлен 212441 файл и каталог.)
+Удаляется mc (3:4.8.27-1) …
+update-alternatives: используется /usr/bin/vim.tiny для предоставления /usr/bin/view (view) в автоматическом режиме
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu3) …
+Обрабатываются триггеры для desktop-file-utils (0.26-1ubuntu3) …
+zeros@gb-linux:~$ wget http://archive.ubuntu.com/ubuntu/pool/universe/m/mc/mc_4.8.27-1_amd64.deb
+--2023-12-11 19:23:32--  http://archive.ubuntu.com/ubuntu/pool/universe/m/mc/mc_4.8.27-1_amd64.deb
+Распознаётся archive.ubuntu.com (archive.ubuntu.com)… 185.125.190.39, 91.189.91.82, 91.189.91.81, ...
+Подключение к archive.ubuntu.com (archive.ubuntu.com)|185.125.190.39|:80... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа… 200 OK
+Длина: 546930 (534K) [application/x-debian-package]
+Сохранение в: ‘mc_4.8.27-1_amd64.deb’
+
+mc_4.8.27-1_amd64.deb                              100%[================================================================================================================>] 534,11K  1,19MB/s    за 0,4s    
+
+2023-12-11 19:23:33 (1,19 MB/s) - ‘mc_4.8.27-1_amd64.deb’ сохранён [546930/546930]
+
+azeros@gb-linux:~$ ls -l
+итого 576
+drwxrwx--- 1 root   vboxsf      0 ноя 27 22:28  hsared
+-rw-rw-r-- 1 azeros azeros 546930 окт 19  2021  mc_4.8.27-1_amd64.deb
+drwx------ 6 azeros azeros   4096 дек  7 05:49  snap
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros azeros   4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2   1002   1002   4096 дек  6 04:16  Учеба
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ sudo dpkg -i mc_4.8.27-1_amd64.deb
+Выбор ранее не выбранного пакета mc.
+(Чтение базы данных … на данный момент установлено 212350 файлов и каталогов.)
+Подготовка к распаковке mc_4.8.27-1_amd64.deb …
+Распаковывается mc (3:4.8.27-1) …
+Настраивается пакет mc (3:4.8.27-1) …
+update-alternatives: используется /usr/bin/mcview для предоставления /usr/bin/view (view) в автоматическом режиме
+Обрабатываются триггеры для mailcap (3.70+nmu1ubuntu1) …
+Обрабатываются триггеры для gnome-menus (3.36.0-1ubuntu3) …
+Обрабатываются триггеры для desktop-file-utils (0.26-1ubuntu3) …
+azeros@gb-linux:~$ snap install telegram-desktop
+telegram-desktop 4.12.2 от Telegram FZ-LLC (telegram-desktop✓) установлен
+azeros@gb-linux:~$ snap remove telegram-desktop
+telegram-desktop удалён
+azeros@gb-linux:~$ ls -l
+итого 576
+drwxrwx--- 1 root   vboxsf      0 ноя 27 22:28  hsared
+-rw-rw-r-- 1 azeros azeros 546930 окт 19  2021  mc_4.8.27-1_amd64.deb
+drwx------ 6 azeros azeros   4096 дек  7 05:49  snap
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros azeros   4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2   1002   1002   4096 дек  6 04:16  Учеба
+drwxr-xr-x 2 azeros azeros   4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ cd Учеба
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw------- 1 1002 1002 0 дек  6 04:16 family
+-rw-rw-r-- 1 1002 1002 0 дек  6 04:16 name
+azeros@gb-linux:~/Учеба$ crontab -l
+no crontab for azeros
+azeros@gb-linux:~/Учеба$ crontab -e
+...
+*/3 * * * * echo 123 >> /home/azeros/Учеба/infinity.txt
+
+no crontab for azeros - using an empty one
+crontab: installing new crontab
+azeros@gb-linux:~/Учеба$ ls -l
+итого 0
+-rw------- 1 1002 1002 0 дек  6 04:16 family
+-rw-rw-r-- 1 1002 1002 0 дек  6 04:16 name
+azeros@gb-linux:~$ crontab -e
+...
+*/3 * * * * echo 123 >> /home/azeros/infinity.txt
+
+crontab: installing new crontab
+azeros@gb-linux:~$ ls -l
+итого 40
+drwxrwx--- 1 root   vboxsf    0 ноя 27 22:28  hsared
+drwx------ 6 azeros azeros 4096 дек  7 05:49  snap
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros azeros 4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2   1002   1002 4096 дек 11 20:30  Учеба
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ ls -l
+итого 44
+drwxrwx--- 1 root   vboxsf    0 ноя 27 22:28  hsared
+-rw-rw-r-- 1 azeros azeros    8 дек 11 20:48  infinity.txt
+drwx------ 6 azeros azeros 4096 дек  7 05:49  snap
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Видео
+drwxr-xr-x 4 azeros azeros 4096 дек  6 04:13  Документы
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Загрузки
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Изображения
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Музыка
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Общедоступные
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34 'Рабочий стол'
+drwxrwxr-x 2   1002   1002 4096 дек 11 20:30  Учеба
+drwxr-xr-x 2 azeros azeros 4096 ноя 27 21:34  Шаблоны
+azeros@gb-linux:~$ cat infinity.txt
+123
+123
